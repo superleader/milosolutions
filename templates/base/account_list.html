@@ -1,0 +1,30 @@
+{% load account_format %}
+
+<p><a href="{% url 'account-add' %}">Add user</a></p>
+<p><a href="{% url 'download-csv' %}">Export csv</a></p>
+{% if object_list %}
+<table border="1" width="100%">
+	<tr>
+		<th>Username</th>
+		<th>Birthday</th>
+		<th>Eligible</th>
+		<th>Random Number</th>
+		<th>BizzFuzz</th>
+		<th>Actions</th>
+	</tr>
+	{% for user in object_list %}
+		<tr>
+			<td>{{ user }}</td>
+			<td>{{ user.birthday }}</td>
+			<td>{{ user.birthday|eligible }}</td>
+			<td>{{ user.random_number }}</td>
+			<td>{{ user.random_number|BizzFuzz }}</td>
+			<td>
+				<a href="{% url 'account-detail' user.pk %}">View</a>
+				<a href="{% url 'account-edit' user.pk %}">Edit</a>
+				<a href="{% url 'account-delete' user.pk %}">Remove</a>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+{% endif %}

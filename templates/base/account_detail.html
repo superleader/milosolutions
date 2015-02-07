@@ -1,0 +1,7 @@
+<h1>User {{ object }} </h1>
+<a href="{% url 'account-list' %}">All users</a>
+<p> Username: {{ object.username }}</p>
+<p> Birthday: {{ object.birthday }}</p>
+<p> Random Number: {{ object.random_number }}</p>
+<p><a href="{% url 'account-edit' object.pk %}">Edit user</a></p>
+<p><a href="{% url 'account-delete' object.pk %}">Delete user</a></p>
